@@ -1,0 +1,22 @@
+# 只發布網頁執行需要的檔案與講稿；過程檔留在本機
+HANDOFF.md
+.deck-log.json
+qa/
+audio/test/
+audio/tts_v1/
+audio/tts_v2/
+audio/music/*
+!audio/music/bgm_bed.mp3
+assets/*
+!assets/avatar.png
+!assets/iceberg.png
+!assets/s1_money.png
+!assets/s2_home.png
+!assets/s3_bath.png
+!assets/s4_repeat.png
+!assets/s5_night.png
+!assets/s6_doctor.png
+# Noto Sans TC（OFL）不再散布字型檔，網頁版改由 Google Fonts 載入
+vendor/
+__pycache__/
+*.pyc
