@@ -16,11 +16,19 @@
   const pad = n => String(n).padStart(2, '0');
 
   // ---- stage scale ----
+  // Scale from the top-left corner and centre with explicit offsets. Centring an oversized
+  // 1920px box with CSS made phones push the stage off-screen (layout viewport grew).
   const fit = () => {
-    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
-    stage.style.transform = `scale(${s})`;
+    const vv = window.visualViewport;
+    const w = vv ? vv.width : innerWidth, h = vv ? vv.height : innerHeight;
+    const s = Math.min(w / 1920, h / 1080);
+    const x = (w - 1920 * s) / 2, y = (h - 1080 * s) / 2;
+    stage.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
   };
-  addEventListener('resize', fit); fit();
+  addEventListener('resize', fit);
+  addEventListener('orientationchange', () => setTimeout(fit, 150));
+  if (window.visualViewport) visualViewport.addEventListener('resize', fit);
+  fit();
 
   // ---- scenario progress squares (signature detail) ----
   for (let i = 0; i < 6; i++) sq.appendChild(document.createElement('i'));
@@ -114,6 +122,7 @@
   });
   function start() {
     playing = true; bPlay.setAttribute('aria-pressed', 'true'); bPlay.textContent = '⏸ 暫停';
+    document.body.classList.add('playing');
     if (bgmOn) bgm.play().catch(() => {});
     // paused mid-beat on the same step: resume that clip
     const b0 = BEATS[beatIdx];
@@ -127,6 +136,7 @@
   }
   function stop() {
     playing = false; voice.pause(); hideSubs(); bgm.pause();
+    document.body.classList.remove('playing');
     bPlay.setAttribute('aria-pressed', 'false'); bPlay.textContent = '▶ 播放解說';
   }
   const toggle = () => (playing ? stop() : start());
@@ -160,9 +170,26 @@
       case 'End': manual(() => go(slides.length - 1, maxStep(slides.at(-1))))(); break;
     }
   });
+  // touch screens (no hover): the toolbar stays hidden so it never covers content; a tap shows it for 4 s
+  let ctlTimer = null;
+  const peekCtl = (ms = 4000) => {
+    document.body.classList.add('show-ctl');
+    clearTimeout(ctlTimer); ctlTimer = setTimeout(() => document.body.classList.remove('show-ctl'), ms);
+  };
+  document.getElementById('viewport').addEventListener('touchstart', () => peekCtl(), { passive: true });
+  document.getElementById('ctl').addEventListener('touchstart', () => peekCtl(), { passive: true });
+  // swipe left/right on touch screens
+  let tx = null, ty = null;
+  stage.addEventListener('touchstart', e => { if (e.touches.length === 1) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; } }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    tx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) manual(dx < 0 ? next : prev)();
+  }, { passive: true });
   const startBox = document.getElementById('start');
-  document.getElementById('goPlay').onclick = () => { startBox.classList.add('hide'); go(cur, 0); start(); };
-  document.getElementById('goSelf').onclick = () => { startBox.classList.add('hide'); go(cur, 1); };
+  document.getElementById('goPlay').onclick = () => { startBox.classList.add('hide'); go(cur, 0); start(); peekCtl(); };
+  document.getElementById('goSelf').onclick = () => { startBox.classList.add('hide'); go(cur, 1); peekCtl(); };
 
   // ---- deep link / QA hooks ----
   const params = new URLSearchParams(location.search);
