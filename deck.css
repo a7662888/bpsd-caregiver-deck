@@ -230,6 +230,7 @@ table.card .ok{color:var(--pass);font-weight:700}
 @media (max-width:700px),(max-height:500px){
   #ctl{bottom:8px;gap:4px;padding:4px;border-radius:12px}
   #ctl button{min-width:44px;height:44px;padding:0 10px;font-size:15px}
+  #ctl .tname{display:none}
   #start .box{padding:24px 20px}
   #start h2{font-size:28px}
   #start p{font-size:16px}

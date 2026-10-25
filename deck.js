@@ -157,6 +157,27 @@
   document.getElementById('bNext').onclick = manual(next);
   bPlay.onclick = toggle;
   bSub.onclick = () => { subOn = !subOn; bSub.setAttribute('aria-pressed', subOn); if (!subOn) sub.classList.remove('on'); else if (playing) sub.classList.add('on'); };
+  // style switcher: 指示牌 (c, default) → 臨床筆記 (a) → 報刊 (b)
+  const THEMES = [['c', '指示牌'], ['a', '臨床筆記'], ['b', '報刊']];
+  const bTheme = document.getElementById('bTheme');
+  const themeCss = document.getElementById('theme-css');
+  const showTheme = () => {
+    const t = document.body.className.replace('t-', '');
+    const name = (THEMES.find(x => x[0] === t) || THEMES[0])[1];
+    bTheme.querySelector('.tname').textContent = '：' + name;
+    bTheme.setAttribute('aria-label', '切換樣式，目前：' + name);
+  };
+  const setTheme = t => {
+    themeCss.href = 'themes/theme-' + t + '.css?v=2';
+    document.body.className = 't-' + t;
+    try { localStorage.setItem('bpsd-theme', t); } catch (e) { /* private mode: style just isn't remembered */ }
+    showTheme();
+  };
+  bTheme.onclick = () => {
+    const i = THEMES.findIndex(x => 't-' + x[0] === document.body.className);
+    setTheme(THEMES[(i + 1) % THEMES.length][0]);
+  };
+  showTheme();
   bBgm.onclick = () => { bgmOn = !bgmOn; bBgm.setAttribute('aria-pressed', bgmOn); if (!bgmOn) bgm.pause(); else if (playing) bgm.play(); };
   addEventListener('keydown', e => {
     if (e.target.closest && e.target.closest('#start')) return;
@@ -166,6 +187,7 @@
       case ' ': e.preventDefault(); toggle(); break;
       case 's': case 'S': bSub.click(); break;
       case 'm': case 'M': bBgm.click(); break;
+      case 't': case 'T': bTheme.click(); break;
       case 'Home': manual(() => go(0, 1))(); break;
       case 'End': manual(() => go(slides.length - 1, maxStep(slides.at(-1))))(); break;
     }

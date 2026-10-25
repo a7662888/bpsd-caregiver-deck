@@ -1,0 +1,57 @@
+/* 樣板 C｜指示牌：近白紙、近黑墨、訊號黃色塊（黑字壓黃，對比最高）、直角粗線；字大好讀，給長輩家屬。
+   姿態聲明：黃色塊是導覽與重點標示，面積超過 5% 屬刻意（hallmark 23 declared posture: signage）。 */
+body.t-c{
+  --paper:#FDFDFB; --surface:#F1F1EE; --surface-2:#DCDCD7; --line:#1A1A1A; --desk:#D6D6D1;
+  --ink:#151515; --ink-2:#262626; --muted:#3F3F3F;
+  --accent:#FFC21A; --accent-ink:#151515; --accent-soft:#FFF0C4; --mark:#FFC21A;
+  --pass:#0E5A2C; --pass-soft:#E7F2EA; --fail:#9E1B1B; --fail-soft:#F8E8E8; --half:#151515; --half-soft:#FFF0C4;
+  --danger:#151515; --r:0px;
+}
+.t-c .pill{border:0;border-radius:0;background:var(--ink);color:var(--accent);padding:0 20px 0 8px;font-size:24px}
+.t-c .pill img{width:44px;height:44px}
+.t-c .meter .sq i.done{background:var(--ink)} .t-c .meter .sq i.now{background:var(--accent);outline:2px solid var(--ink)}
+.t-c .title{display:inline-block;background:var(--accent);padding:4px 20px;font-size:64px}
+.t-c .dek{color:var(--ink-2);font-weight:700}
+.t-c .hook h1 em{display:inline-block;margin-top:12px;color:var(--ink);background:var(--accent);padding:4px 16px;line-height:1.05}
+.t-c .tile span{background:var(--accent);color:var(--ink)}
+.t-c .tile .q{background:var(--ink);color:var(--accent)}
+.t-c .stat{background:none;border-radius:0;padding:20px 0 24px;margin-bottom:24px;border-top:8px solid var(--ink)}
+.t-c .stat .big{color:var(--ink)}
+.t-c .bar{height:20px;background:var(--surface-2)}
+.t-c .bar i{background:var(--ink)}
+.t-c .berg .t1{background:var(--ink);color:var(--accent)}
+.t-c .berg .t2{background:var(--accent)}
+.t-c .dcard{background:none;border-radius:0;min-height:0;padding:20px 24px 0 0;border-top:8px solid var(--ink)}
+.t-c .dcard.key{background:none;outline:0;border-top-color:var(--accent)}
+.t-c .dcard .L{color:var(--ink)}
+.t-c .callout{background:var(--ink);color:var(--paper);border-radius:0;padding:20px 32px}
+.t-c .callout b{color:var(--accent)}
+.t-c .ladder{gap:0}
+.t-c .rung{background:none;border-radius:0;padding:24px 0;border-top:4px solid var(--ink)}
+.t-c .rung .n{color:var(--ink)}
+.t-c .chip.pass{background:var(--pass)} .t-c .chip.half{background:var(--accent);color:var(--ink)}
+.t-c .never{background:var(--paper);border:8px solid var(--fail);border-radius:0}
+.t-c .scn h2{color:var(--ink);border-left:20px solid var(--accent);padding-left:24px}
+.t-c .opts{gap:12px}
+.t-c .opt{background:var(--paper);border:3px solid var(--ink);border-radius:0;padding:16px 20px}
+.t-c .opt .k{border-radius:0}
+.t-c .opt.shown.pass{border-color:var(--pass)} .t-c .opt.shown.fail{border-color:var(--fail)} .t-c .opt.shown.half{border-color:var(--ink);background:var(--accent-soft)}
+.t-c .opt.half .v{background:var(--accent);color:var(--ink)}
+.t-c .opt.danger .v{background:var(--ink);color:var(--accent)}
+.t-c .break{border-radius:0;box-shadow:none;background:var(--paper);border:6px solid var(--ink);padding:32px 40px}
+.t-c .break li::before{border-radius:0;background:var(--ink)}
+.t-c .break .tip{background:var(--accent);border-radius:0}
+.t-c .break .red{background:none;padding:0;border-top:4px solid var(--fail);padding-top:12px}
+.t-c .break .ev .big{color:var(--ink)}
+.t-c table.card td{border-bottom:2px solid var(--ink)}
+.t-c .quote .mark{background:var(--accent)}
+.t-c .col{background:none;border-radius:0;padding:0;border-top:12px solid var(--pass)}
+.t-c .col.no{border-top-color:var(--fail)}
+.t-c .col h3{padding-top:16px}
+.t-c .col li{border-top:2px solid var(--ink)}
+.t-c .todo{background:var(--paper);border:6px solid var(--ink);border-radius:0}
+.t-c .phone{background:var(--ink);color:var(--paper);border-radius:0}
+.t-c .phone p,.t-c .phone .ph-h,.t-c .ph-row span,.t-c .ph-row em{color:var(--paper)}
+.t-c .phone .big,.t-c .ph-row b{color:var(--accent)}
+.t-c .three>div{border:0;border-top:8px solid var(--ink);padding:20px 0 0}
+.t-c .three b{color:var(--ink)}

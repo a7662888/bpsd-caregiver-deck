@@ -91,6 +91,21 @@ s = await state();
 check('hash deep link #11', s.cur === 11 && s.chap === '六題成績單', JSON.stringify(s));
 check('all six squares done on scorecard', s.sq === 'done,done,done,done,done,done', s.sq);
 
+// style switcher: default 指示牌, button and T key cycle, choice survives reload
+await page.goto(url.replace(/[#?].*$/, '') + '?nostart#3');
+await page.evaluate(() => { try { localStorage.removeItem('bpsd-theme'); } catch (e) {} });
+await page.reload(); await page.waitForTimeout(400);
+const th = () => page.evaluate(() => ({ cls: document.body.className, href: document.getElementById('theme-css').getAttribute('href'), label: document.querySelector('#bTheme .tname').textContent }));
+let t0 = await th();
+check('default style is 指示牌 (c)', t0.cls === 't-c' && t0.href.includes('theme-c'), JSON.stringify(t0));
+await page.click('#bTheme'); let t1 = await th();
+check('button switches to 臨床筆記 (a)', t1.cls === 't-a' && t1.href.includes('theme-a') && t1.label === '：臨床筆記', JSON.stringify(t1));
+await page.keyboard.press('t'); let t2 = await th();
+check('T key switches to 報刊 (b)', t2.cls === 't-b' && t2.href.includes('theme-b'), JSON.stringify(t2));
+await page.reload(); await page.waitForTimeout(400); let t3 = await th();
+check('choice remembered after reload', t3.cls === 't-b', JSON.stringify(t3));
+await page.evaluate(() => { try { localStorage.removeItem('bpsd-theme'); } catch (e) {} });
+
 check('no page errors', errors.length === 0, errors.join(' | '));
 await browser.close();
 const failed = results.filter(r => !r.ok).length;

@@ -1,0 +1,63 @@
+/* 樣板 B｜報刊：中性近白紙、明體大標（Noto Serif TC）、墨綠；報紙欄線、引言式重點、雙線報頭 */
+body.t-b{
+  --paper:#FCFCFA; --surface:#F2F1EC; --surface-2:#E4E2DB; --line:#CFCCC3; --desk:#E2E0D8;
+  --ink:#1A1A17; --ink-2:#34342E; --muted:#4B4B44;
+  --accent:#2F6B3F; --accent-ink:#1D4A29; --accent-soft:#E6EFE7; --mark:#E8E0AE;
+  --pass:#1D4A29; --pass-soft:#EBF2EC; --fail:#86201C; --fail-soft:#F6EBEA; --half:#5A470F; --half-soft:#F3EEDD;
+  --danger:#561410; --r:0px;
+  --display:"Noto Serif TC","NotoTC","PMingLiU",serif;
+}
+.t-b .title,.t-b .hook h1,.t-b .scn h2,.t-b h3,.t-b .big,.t-b .quote,.t-b .ask,.t-b .dcard .L,.t-b .rung .n,.t-b .three b{font-family:var(--display)}
+.t-b .pill{border:0;border-radius:0;padding:0 0 4px;height:auto;background:none;border-bottom:2px solid var(--ink);gap:12px;font-size:24px}
+.t-b .pill img{width:40px;height:40px}
+.t-b .title{border-top:7px double var(--ink);padding-top:24px;font-weight:900}
+.t-b .hook h1{font-weight:900;letter-spacing:-.01em}
+.t-b .hook h1 em{color:var(--accent-ink)}
+.t-b .hook .lede{border-left:1px solid var(--line);padding-left:24px}
+.t-b .tile span{background:var(--paper);color:var(--ink);font-family:var(--display)}
+.t-b .tile .q{background:var(--paper);color:var(--ink);font-family:var(--display);border:1px solid var(--ink)}
+.t-b .stat{background:none;border-radius:0;padding:0 0 24px 0;margin-bottom:24px;border-bottom:1px solid var(--ink)}
+.t-b .stat .big{color:var(--ink)}
+.t-b .bar{height:4px;background:var(--surface-2)}
+.t-b .bar i{background:var(--accent)}
+.t-b .berg .t1{background:var(--paper);color:var(--ink);border:1px solid var(--ink);font-family:var(--display)}
+.t-b .berg .t2{background:var(--paper);border:1px solid var(--ink);font-family:var(--display)}
+.t-b .dice{gap:0}
+.t-b .dcard{background:none;border-radius:0;min-height:0;padding:0 32px;border-right:1px solid var(--line)}
+.t-b .dcard:first-child{padding-left:0}
+.t-b .dcard:last-child{border-right:0}
+.t-b .dcard.key{background:none;outline:0}
+.t-b .dcard.key .L{color:var(--accent-ink)}
+.t-b .dcard .L{color:var(--ink)}
+.t-b .callout{background:none;border-radius:0;padding:20px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:var(--display);font-weight:700}
+.t-b .ladder{gap:0}
+.t-b .rung{background:none;border-radius:0;padding:24px 0;border-bottom:1px solid var(--line)}
+.t-b .rung .n{color:var(--ink);font-weight:900}
+.t-b .chip.pass,.t-b .chip.half{background:none;font-family:var(--display);border-bottom:2px solid currentColor;padding:0 0 4px}
+.t-b .chip.pass{color:var(--pass)} .t-b .chip.half{color:var(--half)}
+.t-b .never{background:none;border:0;border-top:7px double var(--fail);border-radius:0;padding:20px 0 0}
+.t-b .scn h2{color:var(--ink);font-weight:900}
+.t-b .opts{gap:0}
+.t-b .opt{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:16px 0;min-height:96px}
+.t-b .opt .k{background:none;color:var(--ink);font-family:var(--display);font-size:40px}
+.t-b .opt .v{font-family:var(--display)}
+.t-b .opt.shown.pass,.t-b .opt.shown.fail,.t-b .opt.shown.half{border-color:var(--ink)}
+.t-b .opt.shown.pass{background:var(--pass-soft)} .t-b .opt.shown.fail{background:var(--fail-soft)} .t-b .opt.shown.half{background:var(--half-soft)}
+.t-b .break{border-radius:0;box-shadow:none;background:var(--paper);border:1px solid var(--ink);padding:32px 40px}
+.t-b .break h3{border-bottom:1px solid var(--ink);padding-bottom:12px}
+.t-b .break li::before{border-radius:0;width:8px;height:8px;background:var(--ink)}
+.t-b .break .tip{background:none;border-radius:0;padding:0;font-family:var(--display);color:var(--accent-ink)}
+.t-b .break .red{background:none;padding:0}
+.t-b .break .ev .big{color:var(--accent-ink)}
+.t-b table.card td{border-bottom-color:var(--ink)}
+.t-b .quote{font-weight:900}
+.t-b .col{background:none;border-radius:0;padding:0}
+.t-b .col h3{border-bottom:7px double var(--ink);padding-bottom:12px}
+.t-b .col li{border-top:1px solid var(--line)}
+.t-b .todo{background:none;border:0;border-radius:0;padding:0;border-left:1px solid var(--ink);padding-left:32px}
+.t-b .phone{background:none;border-radius:0;padding:0 0 20px;margin:0 0 20px;border-bottom:1px solid var(--ink)}
+.t-b .phone .big,.t-b .ph-row b{color:var(--ink)}
+.t-b .three{gap:0}
+.t-b .three>div{border:0;border-right:1px solid var(--line);padding:0 24px}
+.t-b .three>div:first-child{padding-left:0}
+.t-b .three>div:last-child{border-right:0}

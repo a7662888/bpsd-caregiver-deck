@@ -1,0 +1,45 @@
+/* 樣板 A｜臨床筆記：冷調近白紙、深藍墨、深青綠訊號色；不用卡片，以細線與留白分組（Swiss 論證型） */
+body.t-a{
+  --paper:#FBFCFD; --surface:#F1F4F7; --surface-2:#E2E7ED; --line:#C9D1DB; --desk:#DCE2E8;
+  --ink:#0F1B2D; --ink-2:#26324A; --muted:#47536A;
+  --accent:#0E7C7B; --accent-ink:#0A4C4C; --accent-soft:#E3F1F0; --mark:#CBE9E4;
+  --pass:#14532D; --pass-soft:#EAF3EC; --fail:#8C1D1D; --fail-soft:#F8ECEC; --half:#6A4A0C; --half-soft:#F6F0E2;
+  --danger:#5C1010; --r:0px;
+}
+.t-a .pill{border:0;padding:0;height:auto;background:none;gap:12px;font-size:24px;color:var(--muted)}
+.t-a .pill img{width:40px;height:40px}
+.t-a .title{padding-bottom:20px;border-bottom:3px solid var(--ink)}
+.t-a .dek{margin-top:20px}
+.t-a .hook h1 em{color:var(--accent-ink)}
+.t-a .tile span{background:var(--paper);color:var(--ink);border-left:6px solid var(--accent)}
+.t-a .tile .q{background:var(--ink)}
+.t-a .stat{background:none;border-radius:0;padding:0 0 28px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.t-a .bar{height:8px;background:var(--surface-2)}
+.t-a .berg .t1{background:var(--ink)}
+.t-a .berg .t2{background:var(--paper);border-left:6px solid var(--accent)}
+.t-a .dice{gap:0;margin-top:48px}
+.t-a .dcard{background:none;border-radius:0;min-height:0;padding:8px 32px 8px 28px;border-left:2px solid var(--line)}
+.t-a .dcard.key{background:none;outline:0;border-left:6px solid var(--accent)}
+.t-a .callout{background:none;border-radius:0;padding:8px 0 8px 24px;border-left:6px solid var(--accent);font-weight:500}
+.t-a .callout b{font-weight:900}
+.t-a .ladder{gap:0}
+.t-a .rung{background:none;border-radius:0;padding:24px 0;border-top:1px solid var(--line)}
+.t-a .chip.pass,.t-a .chip.half{background:none;border:2px solid currentColor}
+.t-a .chip.pass{color:var(--pass)} .t-a .chip.half{color:var(--half)}
+.t-a .never{background:none;border:0;border-left:6px solid var(--fail);border-radius:0;padding:8px 0 8px 28px}
+.t-a .opts{gap:0}
+.t-a .opt{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 8px;min-height:96px}
+.t-a .opt .k{background:none;color:var(--ink);border:2px solid var(--ink);border-radius:50%}
+.t-a .opt.shown.pass{background:var(--pass-soft);border-color:var(--line);box-shadow:inset 6px 0 0 var(--pass)}
+.t-a .opt.shown.fail{background:var(--fail-soft);border-color:var(--line);box-shadow:inset 6px 0 0 var(--fail)}
+.t-a .opt.shown.half{background:var(--half-soft);border-color:var(--line);box-shadow:inset 6px 0 0 var(--half)}
+.t-a .break{border-radius:0;box-shadow:none;background:var(--paper);border-left:6px solid var(--ink);padding:32px 40px}
+.t-a .break li::before{border-radius:0;width:10px;height:2px;top:.75em;background:var(--ink)}
+.t-a .break .tip{background:none;border-radius:0;padding:0;color:var(--accent-ink)}
+.t-a .break .red{background:none;padding:12px 0 0;border-top:1px solid var(--line)}
+.t-a .col{background:none;border-radius:0;padding:24px 0 0;border-top:6px solid var(--pass)}
+.t-a .col.no{border-top-color:var(--fail)}
+.t-a .col li{border-top:1px solid var(--line)}
+.t-a .todo{background:none;border:0;border-top:6px solid var(--accent);border-radius:0;padding:28px 0 0}
+.t-a .phone{background:none;border-radius:0;padding:20px 0;margin:0;border-top:1px solid var(--line)}
+.t-a .three>div{border:0;border-top:3px solid var(--ink);padding:20px 0 0}

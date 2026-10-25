@@ -1,0 +1,22 @@
+/* 去AI 基底：三種樣板共用（hallmark v2 gates 54 標題上小標籤、4 卡片套卡片、30a 符號當圖示、3 等寬卡片格的處理）。
+   只在 body 帶 t-a／t-b／t-c 時生效；沒有 ?theme= 參數就是原版。 */
+body[class*="t-"] .scn .no{display:none}
+body[class*="t-"] .scn h2{margin-top:0}
+body[class*="t-"] .col h3 i{display:none}
+body[class*="t-"] .callout b{padding:0;border-radius:0;background:none;color:inherit;font-size:inherit;white-space:normal}
+body[class*="t-"] .break .red[style]{background:none!important;padding:0;font-size:20px;color:var(--muted)}
+body[class*="t-"] .break .red{border-radius:0}
+body[class*="t-"] .berg .tag,
+body[class*="t-"] .tile,
+body[class*="t-"] .tile span,
+body[class*="t-"] .bar,
+body[class*="t-"] .meter .sq i,
+body[class*="t-"] .opt .v,
+body[class*="t-"] .chip,
+body[class*="t-"] #sub{border-radius:0}
+body[class*="t-"] .tile .q{border-radius:0}
+body[class*="t-"] table.card{border-spacing:0}
+body[class*="t-"] table.card td{background:none;border-radius:0!important;border-bottom:1px solid var(--line)}
+body[class*="t-"] .tagx{background:none;padding:0;border-radius:0}
+body[class*="t-"] .three b{background:none;width:auto;height:auto;border-radius:0;font-size:44px;line-height:1;color:var(--accent-ink)}
+body[class*="t-"] .three>div{border-radius:0}
